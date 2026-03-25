@@ -23,8 +23,8 @@ by FriendlyElec.
 Signed-off-by: Daniel Bozeman <daniel@orb.net>
 ---
  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- .../boot/dts/rockchip/rk3528-nanopi-zero2.dts      | 367 ++++++++++++++++++++
- 2 files changed, 368 insertions(+)
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts      | 366 ++++++++++++++++++++
+ 2 files changed, 367 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
 
 --- a/arch/arm64/boot/dts/rockchip/Makefile
@@ -39,7 +39,7 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
-@@ -0,0 +1,367 @@
+@@ -0,0 +1,366 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2024 FriendlyElec Computer Tech. Co., Ltd.
@@ -93,7 +93,6 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
 +
 +		led-0 {
 +			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
 +			function = LED_FUNCTION_HEARTBEAT;
 +			gpios = <&gpio4 RK_PB0 GPIO_ACTIVE_HIGH>;
 +			linux,default-trigger = "heartbeat";
