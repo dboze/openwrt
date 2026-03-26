@@ -23,8 +23,8 @@ by FriendlyElec.
 Signed-off-by: Daniel Bozeman <daniel@orb.net>
 ---
  arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- .../boot/dts/rockchip/rk3528-nanopi-zero2.dts      | 366 ++++++++++++++++++++
- 2 files changed, 367 insertions(+)
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts      | 348 ++++++++++++++++++++
+ 2 files changed, 349 insertions(+)
  create mode 100644 arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
 
 --- a/arch/arm64/boot/dts/rockchip/Makefile
@@ -39,7 +39,7 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3528-rock-2a.dtb
 --- /dev/null
 +++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
-@@ -0,0 +1,366 @@
+@@ -0,0 +1,348 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2024 FriendlyElec Computer Tech. Co., Ltd.
@@ -154,18 +154,6 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
 +		regulator-min-microvolt = <3300000>;
 +		regulator-max-microvolt = <3300000>;
 +		vin-supply = <&vcc_3v3>;
-+	};
-+
-+	usb2_host_5v: regulator-5v0-usb2-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb20_host1_pwren>;
-+		regulator-name = "usb2_host_5v";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
 +	};
 +
 +	vcc5v0_sys: regulator-5v0-vcc-sys {
@@ -315,12 +303,6 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
 +		};
 +	};
 +
-+	usb {
-+		usb20_host1_pwren: usb20-host1-pwren {
-+			rockchip,pins = <4 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
 +	leds {
 +		sys_led_pin: sys-led-pin {
 +			rockchip,pins = <4 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
@@ -381,7 +363,7 @@ Signed-off-by: Daniel Bozeman <daniel@orb.net>
 +};
 +
 +&usb2phy_host {
-+	phy-supply = <&usb2_host_5v>;
++	phy-supply = <&vcc5v0_sys>;
 +	status = "okay";
 +};
 +
